@@ -9,6 +9,9 @@ namespace pricingscraper.backend.businesslogic.Interfaces
 {
     public interface IBotBL
     {
+        Task<SqlRspDTO> getIdBotExecution();
         Task<IList<SimilarDTO>> getListSimilar();
+        Task<SqlRspDTO> insRegistroPrecio(RegistroPrecioDTO registroPrecio);
+        Task<SqlRspDTO> finBotExecution(int nIdBotExecution);
     }
 }

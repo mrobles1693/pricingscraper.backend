@@ -9,6 +9,9 @@ namespace pricingscraper.backend.repository.Interfaces
 {
     public interface IBotRepository
     {
+        Task<SqlRspDTO> getIdBotExecution();
         Task<IList<SimilarDTO>> getListSimilar();
+        Task<SqlRspDTO> insRegistroPrecio(RegistroPrecioDTO registroPrecio);
+        Task<SqlRspDTO> finBotExecution(int nIdBotExecution);
     }
 }

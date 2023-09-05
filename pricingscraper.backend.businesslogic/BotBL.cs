@@ -18,6 +18,9 @@ namespace pricingscraper.backend.businesslogic
             this.repository = _repository;
         }
 
+        public async Task<SqlRspDTO> getIdBotExecution() => await repository.getIdBotExecution();
         public async Task<IList<SimilarDTO>> getListSimilar() => await repository.getListSimilar();
+        public async Task<SqlRspDTO> insRegistroPrecio(RegistroPrecioDTO registroPrecio) => await repository.insRegistroPrecio(registroPrecio);
+        public async Task<SqlRspDTO> finBotExecution(int nIdBotExecution) => await repository.finBotExecution(nIdBotExecution);
     }
 }

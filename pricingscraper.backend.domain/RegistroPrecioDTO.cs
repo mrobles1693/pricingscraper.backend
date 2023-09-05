@@ -12,6 +12,7 @@ namespace pricingscraper.backend.domain
         public int nIdProducto { get; set; }
         public int nIdComercio { get; set; }
         public int nIdSimilar { get; set; }
+        public int nIdBotExecution { get; set; }
         public decimal nPrecio { get; set; }
         public decimal? nPrecioOferta { get; set; }
         public decimal? nPrecioTarjeta { get; set; }
