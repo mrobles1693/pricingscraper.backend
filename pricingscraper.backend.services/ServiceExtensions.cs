@@ -11,12 +11,14 @@ namespace pricingscraper.backend.services
         {
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IBotRepository, BotRepository>();
+            services.AddScoped<IProductoRepository, ProductoRepository>();
         }
 
         public static void ConfigureServicesManager(this IServiceCollection services)
         {
             services.AddScoped<IAuthBL, AuthBL>();
             services.AddScoped<IBotBL, BotBL>();
+            services.AddScoped<IProductoBL, ProductoBL>();
         }
     }
 }
