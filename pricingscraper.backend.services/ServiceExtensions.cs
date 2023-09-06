@@ -9,11 +9,13 @@ namespace pricingscraper.backend.services
     {
         public static void ConfigureRepositoryManager(this IServiceCollection services, string connectionString)
         {
+            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IBotRepository, BotRepository>();
         }
 
         public static void ConfigureServicesManager(this IServiceCollection services)
         {
+            services.AddScoped<IAuthBL, AuthBL>();
             services.AddScoped<IBotBL, BotBL>();
         }
     }
