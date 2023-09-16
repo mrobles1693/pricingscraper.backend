@@ -11,5 +11,8 @@ namespace pricingscraper.backend.domain
         public long nIdBotExecution { get; set; }
         public DateTime dFechaIni { get; set; }
         public DateTime? dFechaFin { get; set; }
+        public string? sFechaIni { get; set; }
+        public string? sFechaFin { get; set; }
+        public int? nMinutos { get; set; }
     }
 }

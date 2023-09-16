@@ -12,6 +12,9 @@ namespace pricingscraper.backend.services
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IBotRepository, BotRepository>();
             services.AddScoped<IProductoRepository, ProductoRepository>();
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<IMarcaRepository, MarcaRepository>();
+            services.AddScoped<IPresentacionRepository, PresentacionRepository>();
         }
 
         public static void ConfigureServicesManager(this IServiceCollection services)
@@ -19,6 +22,9 @@ namespace pricingscraper.backend.services
             services.AddScoped<IAuthBL, AuthBL>();
             services.AddScoped<IBotBL, BotBL>();
             services.AddScoped<IProductoBL, ProductoBL>();
+            services.AddScoped<ICategoriaBL, CategoriaBL>();
+            services.AddScoped<IMarcaBL, MarcaBL>();
+            services.AddScoped<IPresentacionBL, PresentacionBL>();
         }
     }
 }

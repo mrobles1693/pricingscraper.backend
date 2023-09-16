@@ -101,7 +101,7 @@ namespace pricingscraper.backend.repository
         {
             SqlRspDTO res = new SqlRspDTO(); ;
 
-            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnInmobisoft")))
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnPricingScraper")))
             {
                 DynamicParameters parameters = new();
                 string storedProcedure = string.Format("{0};{1}", "[pa_producto]", 6);
@@ -122,7 +122,7 @@ namespace pricingscraper.backend.repository
         {
             SqlRspDTO res = new SqlRspDTO(); ;
 
-            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnInmobisoft")))
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnPricingScraper")))
             {
                 DynamicParameters parameters = new();
                 string storedProcedure = string.Format("{0};{1}", "[pa_producto]", 7);
@@ -133,6 +133,72 @@ namespace pricingscraper.backend.repository
                 parameters.Add("nIdMarca", producto.nIdMarca);
                 parameters.Add("nIdUnidadMedida", producto.nIdUnidadMedida);
                 parameters.Add("nUnidades", producto.nUnidades);
+
+                res = await connection.QuerySingleAsync<SqlRspDTO>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return res;
+        }
+
+        public async Task<IList<CategoriaDTO>> getListCategoriasByProducto(int nIdProducto)
+        {
+            IEnumerable<CategoriaDTO> list = new List<CategoriaDTO>();
+
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnPricingScraper")))
+            {
+                DynamicParameters parameters = new();
+                string storedProcedure = string.Format("{0};{1}", "[pa_producto]", 8);
+                parameters.Add("nIdProducto", nIdProducto);
+
+                list = await connection.QueryAsync<CategoriaDTO>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return list.ToList();
+        }
+
+        public async Task<IList<CategoriaDTO>> getListCategoriasDispByProducto(int nIdProducto)
+        {
+            IEnumerable<CategoriaDTO> list = new List<CategoriaDTO>();
+
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnPricingScraper")))
+            {
+                DynamicParameters parameters = new();
+                string storedProcedure = string.Format("{0};{1}", "[pa_producto]", 9);
+                parameters.Add("nIdProducto", nIdProducto);
+
+                list = await connection.QueryAsync<CategoriaDTO>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return list.ToList();
+        }
+
+        public async Task<SqlRspDTO> InsCategoriaProducto(ProductoCategoriaDTO productoCategoria)
+        {
+            SqlRspDTO res = new SqlRspDTO(); ;
+
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnPricingScraper")))
+            {
+                DynamicParameters parameters = new();
+                string storedProcedure = string.Format("{0};{1}", "[pa_producto]", 10);
+                parameters.Add("nIdProducto", productoCategoria.nIdProducto);
+                parameters.Add("nIdCategoria", productoCategoria.nIdCategoria);
+
+                res = await connection.QuerySingleAsync<SqlRspDTO>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+            }
+
+            return res;
+        }
+
+        public async Task<SqlRspDTO> DelCategoriaProducto(ProductoCategoriaDTO productoCategoria)
+        {
+            SqlRspDTO res = new SqlRspDTO(); ;
+
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("cnPricingScraper")))
+            {
+                DynamicParameters parameters = new();
+                string storedProcedure = string.Format("{0};{1}", "[pa_producto]", 11);
+                parameters.Add("nIdProducto", productoCategoria.nIdProducto);
+                parameters.Add("nIdCategoria", productoCategoria.nIdCategoria);
 
                 res = await connection.QuerySingleAsync<SqlRspDTO>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
             }

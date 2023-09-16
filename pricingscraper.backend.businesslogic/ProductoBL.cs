@@ -25,5 +25,9 @@ namespace pricingscraper.backend.businesslogic
         public async Task<IList<SelectDTO>> getSelectUnidadMedida() => await repository.getSelectUnidadMedida();    
         public async Task<SqlRspDTO> InsProducto(ProductoDTO producto) => await repository.InsProducto(producto);
         public async Task<SqlRspDTO> UpdProducto(ProductoDTO producto) => await repository.UpdProducto (producto);
+        public async Task<IList<CategoriaDTO>> getListCategoriasByProducto(int nIdProducto) => await repository.getListCategoriasByProducto(nIdProducto);
+        public async Task<IList<CategoriaDTO>> getListCategoriasDispByProducto(int nIdProducto) => await repository.getListCategoriasDispByProducto(nIdProducto);
+        public async Task<SqlRspDTO> InsCategoriaProducto(ProductoCategoriaDTO productoCategoria) => await repository.InsCategoriaProducto(productoCategoria);
+        public async Task<SqlRspDTO> DelCategoriaProducto(ProductoCategoriaDTO productoCategoria) => await repository.DelCategoriaProducto(productoCategoria);
     }
 }

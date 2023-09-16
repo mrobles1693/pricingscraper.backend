@@ -16,5 +16,9 @@ namespace pricingscraper.backend.businesslogic.Interfaces
         Task<IList<SelectDTO>> getSelectUnidadMedida();
         Task<SqlRspDTO> InsProducto(ProductoDTO producto);
         Task<SqlRspDTO> UpdProducto(ProductoDTO producto);
+        Task<IList<CategoriaDTO>> getListCategoriasByProducto(int nIdProducto);
+        Task<IList<CategoriaDTO>> getListCategoriasDispByProducto(int nIdProducto);
+        Task<SqlRspDTO> InsCategoriaProducto(ProductoCategoriaDTO productoCategoria);
+        Task<SqlRspDTO> DelCategoriaProducto(ProductoCategoriaDTO productoCategoria);
     }
 }

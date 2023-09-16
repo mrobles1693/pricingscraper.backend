@@ -167,5 +167,91 @@ namespace pricingscraper.backend.services.Controllers
                 return StatusCode(500, response);
             }
         }
+
+        [HttpGet("[action]")]
+        public async Task<ActionResult<ApiResponse<List<CategoriaDTO>>>> getListCategoriasByProducto(int nIdProducto)
+        {
+
+            ApiResponse<List<CategoriaDTO>> response = new ApiResponse<List<CategoriaDTO>>();
+
+            try
+            {
+                var result = await service.getListCategoriasByProducto(nIdProducto);
+
+                response.success = true;
+                response.data = (List<CategoriaDTO>)result;
+                return StatusCode(200, response);
+            }
+            catch (Exception ex)
+            {
+                response.success = false;
+                response.errMsj = ex.Message;
+                return StatusCode(500, response);
+            }
+        }
+
+        [HttpGet("[action]")]
+        public async Task<ActionResult<ApiResponse<List<CategoriaDTO>>>> getListCategoriasDispByProducto(int nIdProducto)
+        {
+
+            ApiResponse<List<CategoriaDTO>> response = new ApiResponse<List<CategoriaDTO>>();
+
+            try
+            {
+                var result = await service.getListCategoriasDispByProducto(nIdProducto);
+
+                response.success = true;
+                response.data = (List<CategoriaDTO>)result;
+                return StatusCode(200, response);
+            }
+            catch (Exception ex)
+            {
+                response.success = false;
+                response.errMsj = ex.Message;
+                return StatusCode(500, response);
+            }
+        }
+
+        [HttpPost("[action]")]
+        public async Task<ActionResult<ApiResponse<SqlRspDTO>>> postInsCategoriaProducto([FromBody] ProductoCategoriaDTO productoCategoria)
+        {
+            ApiResponse<SqlRspDTO> response = new ApiResponse<SqlRspDTO>();
+
+            try
+            {
+                var result = await service.InsCategoriaProducto(productoCategoria);
+
+                response.success = result.nCod == 0 ? false : true;
+                response.data = result;
+                return StatusCode(200, response);
+            }
+            catch (Exception ex)
+            {
+                response.success = false;
+                response.errMsj = ex.Message;
+                return StatusCode(500, response);
+            }
+        }
+
+        [HttpPost("[action]")]
+        public async Task<ActionResult<ApiResponse<SqlRspDTO>>> postDelCategoriaProducto([FromBody] ProductoCategoriaDTO productoCategoria)
+        {
+            ApiResponse<SqlRspDTO> response = new ApiResponse<SqlRspDTO>();
+
+            try
+            {
+                var result = await service.DelCategoriaProducto(productoCategoria);
+
+                response.success = result.nCod == 0 ? false : true;
+                response.data = result;
+                return StatusCode(200, response);
+            }
+            catch (Exception ex)
+            {
+                response.success = false;
+                response.errMsj = ex.Message;
+                return StatusCode(500, response);
+            }
+        }
     }
 }
