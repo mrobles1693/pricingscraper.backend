@@ -9,6 +9,7 @@ namespace pricingscraper.backend.domain
     public class BotExecutionDTO
     {
         public long nIdBotExecution { get; set; }
+        public int? nIdTurno { get; set; }
         public DateTime dFechaIni { get; set; }
         public DateTime? dFechaFin { get; set; }
         public string? sFechaIni { get; set; }

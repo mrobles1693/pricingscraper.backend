@@ -8,7 +8,7 @@ namespace pricingscraper.backend.domain
 {
     public class UnidadMedidaDTO
     {
-        public int nIdUnidadMedida { get; set; }
+        public int? nIdUnidadMedida { get; set; }
         public string sUnidadMedida { get; set; }
         public string sSimbolo { get; set; }
         public string? sDescripcion { get; set; }    
