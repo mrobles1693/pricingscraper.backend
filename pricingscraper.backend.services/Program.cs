@@ -30,7 +30,7 @@ builder.Services.AddCors(options => {
         name: CorsConfiguration,
         builder =>
         {
-            builder.WithOrigins("http://localhost:4200", "http://localhost:4201")
+            builder.WithOrigins("http://localhost:4200", "http://localhost:4201", "https://pricingscraperfe.azurewebsites.net")
             .AllowAnyMethod()
             .AllowAnyHeader();
         });

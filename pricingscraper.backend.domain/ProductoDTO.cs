@@ -16,6 +16,7 @@ namespace pricingscraper.backend.domain
         public int nIdMarca { get; set; }
         public string? sMarca { get; set; }
         public int nIdUnidadMedida { get; set; }
+        public string? sUnidadMedida { get; set; }
         public string? sSimbolo { get; set; }
         public decimal nUnidades { get; set; }
     }
