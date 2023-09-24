@@ -19,5 +19,7 @@ namespace pricingscraper.backend.businesslogic
         }
 
         public async Task<IList<BotExecutionDTO>> getListBotExecution() => await repository.getListBotExecution();
+        public async Task<BotExecutionDTO> getBotExecution(int nIdBotExecution) => await repository.getBotExecution(nIdBotExecution);
+        public async Task<IList<BotExecutionReportDTO>> getBotExecutionRepo(int nIdBotExecution) => await repository.getBotExecutionRepo(nIdBotExecution);
     }
 }

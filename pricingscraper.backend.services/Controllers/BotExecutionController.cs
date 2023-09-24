@@ -37,5 +37,47 @@ namespace pricingscraper.backend.services.Controllers
                 return StatusCode(500, response);
             }
         }
+
+        [HttpGet("[action]")]
+        public async Task<ActionResult<ApiResponse<BotExecutionDTO>>> getBotExecution(int nIdBotExecution)
+        {
+            ApiResponse<BotExecutionDTO> response = new ApiResponse<BotExecutionDTO>();
+
+            try
+            {
+                var result = await service.getBotExecution(nIdBotExecution);
+
+                response.success = true;
+                response.data = (BotExecutionDTO) result;
+                return StatusCode(200, response);
+            }
+            catch (Exception ex)
+            {
+                response.success = false;
+                response.errMsj = ex.Message;
+                return StatusCode(500, response);
+            }
+        }
+
+        [HttpGet("[action]")]
+        public async Task<ActionResult<ApiResponse<List<BotExecutionReportDTO>>>> getBotExecutionRepo(int nIdBotExecution)
+        {
+            ApiResponse<List<BotExecutionReportDTO>> response = new ApiResponse<List<BotExecutionReportDTO>>();
+
+            try
+            {
+                var result = await service.getBotExecutionRepo(nIdBotExecution);
+
+                response.success = true;
+                response.data = (List<BotExecutionReportDTO>)result;
+                return StatusCode(200, response);
+            }
+            catch (Exception ex)
+            {
+                response.success = false;
+                response.errMsj = ex.Message;
+                return StatusCode(500, response);
+            }
+        }
     }
 }

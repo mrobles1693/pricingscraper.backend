@@ -15,5 +15,20 @@ namespace pricingscraper.backend.domain
         public string? sFechaIni { get; set; }
         public string? sFechaFin { get; set; }
         public int? nMinutos { get; set; }
+        public int? nCantProductos { get; set; }
+        public int? nCantSimilar { get; set; }
+        public int? nCantProductosScrap { get; set; }
+        public int? nCantSimilarScrap { get; set; }
+    }
+
+    public class BotExecutionReportDTO
+    {
+        public string sSKU { get; set; }
+        public string sDescripcion { get; set; }
+        public int nIdComercio { get; set; }
+        public string sComercio { get; set; }
+        public decimal nPrecio { get; set; }
+        public decimal? nPrecioOferta { get; set; }
+        public decimal? nPrecioTarjeta { get; set; }
     }
 }

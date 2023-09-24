@@ -10,5 +10,7 @@ namespace pricingscraper.backend.repository.Interfaces
     public interface IBotExecutionRepository
     {
         Task<IList<BotExecutionDTO>> getListBotExecution();
+        Task<BotExecutionDTO> getBotExecution(int nIdBotExecution);
+        Task<IList<BotExecutionReportDTO>> getBotExecutionRepo(int nIdBotExecution);
     }
 }
